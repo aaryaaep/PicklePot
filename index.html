@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Madhavi's Pickle Pot | Homemade Pickles</title>
   <meta name="description" content="Shop traditional homemade pickles from Madhavi's Pickle Pot &mdash; mango, gongura, lemon, tomato and more. Order easily through WhatsApp.">
   <meta name="theme-color" content="#6F3517">
@@ -58,12 +58,12 @@
 
     <nav class="category-bar" aria-label="Pickle categories">
       <div class="container category-bar-inner">
-        <button type="button" class="category active" data-category="all">All Pickles</button>
-        <button type="button" class="category" data-category="mango">Mango</button>
-        <button type="button" class="category" data-category="gongura">Gongura</button>
-        <button type="button" class="category" data-category="lemon">Lemon</button>
-        <button type="button" class="category" data-category="tomato">Tomato</button>
-        <button type="button" class="category" data-category="special">Specials</button>
+        <button type="button" class="category active" data-category="all"><span aria-hidden="true">🛍️</span> All Pickles</button>
+        <button type="button" class="category" data-category="mango"><span aria-hidden="true">🥭</span> Mango</button>
+        <button type="button" class="category" data-category="gongura"><span aria-hidden="true">🌿</span> Gongura</button>
+        <button type="button" class="category" data-category="lemon"><span aria-hidden="true">🍋</span> Lemon</button>
+        <button type="button" class="category" data-category="tomato"><span aria-hidden="true">🍅</span> Tomato</button>
+        <button type="button" class="category" data-category="special"><span aria-hidden="true">⭐</span> Specials</button>
       </div>
     </nav>
   </header>
@@ -214,6 +214,22 @@
       <p class="cart-note">You'll confirm your order directly with us on WhatsApp.</p>
     </div>
   </aside>
+
+  <!-- ===================== MOBILE CART BAR ===================== -->
+  <button type="button" id="mobileCartBar" class="mobile-cart-bar" hidden aria-label="View cart">
+    <span class="mobile-cart-bar-icon" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M3 4h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H6"></path><circle cx="9" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
+      <span id="mobileCartBarCount" class="mobile-cart-bar-count">0</span>
+    </span>
+    <span class="mobile-cart-bar-summary">
+      <strong id="mobileCartBarItems">0 items</strong>
+      <span id="mobileCartBarTotal">&#8377;0</span>
+    </span>
+    <span class="mobile-cart-bar-action">
+      View Cart
+      <svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </span>
+  </button>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
