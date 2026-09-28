@@ -31,7 +31,11 @@
 
 /* ---------- Reset & base ---------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
@@ -40,6 +44,25 @@ body {
   color: var(--ink);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* safety net against any accidental horizontal scroll on small screens */
+}
+
+/* Tap-friendly by default: no lingering blue highlight, no 300ms tap delay,
+   and every button/link keeps a comfortable minimum touch target on touch devices. */
+button, a, input {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* Comfortable touch targets on the primary tap-to-act controls. Small
+     round icon/stepper buttons (cart qty, close, search) keep their own
+     compact sizing so they don't get stretched into ovals. */
+  .category, .size-option, .add-cart, .buy-now, .cart-button,
+  .checkout-button, .continue-shopping, .clear-search-button,
+  a.hero-cta, a.whatsapp-button, .mobile-cart-bar {
+    min-height: 44px;
+  }
 }
 
 img { max-width: 100%; display: block; }
@@ -193,7 +216,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border: none;
   background: transparent;
   padding: 8px 0;
-  font-size: 0.95rem;
+  font-size: 16px; /* keeps iOS Safari from zooming in on focus */
   color: var(--ink);
   min-width: 0;
 }
@@ -479,7 +502,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin-bottom: 14px;
 }
 .stars { color: var(--golden); letter-spacing: 1px; }
-.rating-value { font-weight: 700; color: var(--dark-brown); }
+.rating-value {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dark-brown);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
 
 .size-selector {
   display: flex;
@@ -811,6 +843,38 @@ body.cart-open { overflow: hidden; }
 .cart-item-qty button:hover { background: var(--cream); }
 .qty-value { font-weight: 700; min-width: 1.2ch; text-align: center; }
 
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  background: var(--dark-brown);
+  border-radius: var(--radius-s);
+  padding: 4px;
+  justify-self: stretch;
+}
+.qty-stepper button {
+  width: 32px; height: 32px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qty-stepper button:hover { background: rgba(255, 255, 255, 0.15); }
+.pdp-qty-value {
+  flex: 1;
+  text-align: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
 .cart-item-end {
   display: flex;
   flex-direction: column;
@@ -916,6 +980,20 @@ body.cart-open { overflow: hidden; }
 }
 
 /* =========================================================
+   MOBILE CART BAR (Amazon/Flipkart-style persistent bar)
+   ========================================================= */
+.mobile-cart-bar {
+  display: none; /* desktop: the header cart button is sufficient */
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  background: var(--dark-brown);
+  color: var(--white);
+  border: none;
+  text-align: left;
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 
@@ -966,6 +1044,69 @@ body.cart-open { overflow: hidden; }
   .cart-panel { width: 100%; }
 
   .footer-content { flex-direction: column; }
+
+  /* Persistent "View Cart" bar, Amazon/Flipkart style */
+  .mobile-cart-bar:not([hidden]) {
+    display: flex;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 850;
+    padding: 12px 16px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -6px 20px -8px rgba(53, 24, 10, 0.35);
+  }
+  .mobile-cart-bar-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mobile-cart-bar-icon .icon { width: 24px; height: 24px; }
+  .mobile-cart-bar-count {
+    position: absolute;
+    top: -8px; right: -10px;
+    background: var(--golden);
+    color: var(--dark-brown);
+    font-size: 0.68rem;
+    font-weight: 800;
+    min-width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+  }
+  .mobile-cart-bar-summary {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+    min-width: 0;
+  }
+  .mobile-cart-bar-summary strong { font-size: 0.85rem; }
+  .mobile-cart-bar-summary span { font-size: 0.8rem; color: #f0dcc4; }
+  .mobile-cart-bar-action {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    border-radius: 999px;
+  }
+  .mobile-cart-bar-action .icon { width: 16px; height: 16px; }
+
+  body.has-mobile-cart-bar { padding-bottom: 68px; }
+  body.has-mobile-cart-bar.cart-open { padding-bottom: 0; }
+
+  /* Larger touch targets for quantity controls on touch devices */
+  .cart-item-qty button { width: 34px; height: 34px; }
+  .qty-stepper button { width: 38px; height: 38px; }
 }
 
 /* Small phone */
