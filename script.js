@@ -138,6 +138,11 @@
     cartTotal: document.getElementById("cartTotal"),
     checkoutButton: document.getElementById("checkoutButton"),
 
+    mobileCartBar: document.getElementById("mobileCartBar"),
+    mobileCartBarCount: document.getElementById("mobileCartBarCount"),
+    mobileCartBarItems: document.getElementById("mobileCartBarItems"),
+    mobileCartBarTotal: document.getElementById("mobileCartBarTotal"),
+
     toast: document.getElementById("toast"),
     year: document.getElementById("year")
   };
@@ -196,6 +201,16 @@
         '" data-id="' + product.id + '" data-size-index="' + i + '">' + s.name + "</button>";
     }).join("");
 
+    var cartLine = findCartLine(product.id, sizeIndex);
+
+    var addCartControl = cartLine
+      ? '<div class="qty-stepper" role="group" aria-label="Quantity in cart">' +
+          '<button type="button" class="pdp-qty-decrease" data-id="' + product.id + '" data-size-index="' + sizeIndex + '" aria-label="Decrease quantity">&minus;</button>' +
+          '<span class="pdp-qty-value">' + cartLine.quantity + '</span>' +
+          '<button type="button" class="pdp-qty-increase" data-id="' + product.id + '" data-size-index="' + sizeIndex + '" aria-label="Increase quantity">+</button>' +
+        '</div>'
+      : '<button type="button" class="add-cart" data-id="' + product.id + '">Add to Cart</button>';
+
     var card = document.createElement("article");
     card.className = "product-card";
     card.dataset.id = product.id;
@@ -221,7 +236,7 @@
         '</div>' +
       '</div>' +
       '<div class="product-actions">' +
-        '<button type="button" class="add-cart" data-id="' + product.id + '">Add to Cart</button>' +
+        addCartControl +
         '<button type="button" class="buy-now" data-id="' + product.id + '">Buy Now</button>' +
       '</div>';
 
@@ -349,6 +364,15 @@
     el.cartBottom.hidden = isEmpty;
 
     el.cartTotal.textContent = formatRupees(cartTotalPrice());
+
+    el.mobileCartBarCount.textContent = count;
+    el.mobileCartBarItems.textContent = count + (count === 1 ? " item" : " items");
+    el.mobileCartBarTotal.textContent = formatRupees(cartTotalPrice());
+    el.mobileCartBar.hidden = isEmpty;
+    document.body.classList.toggle("has-mobile-cart-bar", !isEmpty);
+
+    // Keep product cards (Add to Cart vs. quantity stepper) in sync with cart state.
+    renderProducts();
   }
 
   /* ---------------------------------------------------------
@@ -448,6 +472,18 @@
       return;
     }
 
+    var pdpDec = e.target.closest(".pdp-qty-decrease");
+    if (pdpDec) {
+      changeQuantity(Number(pdpDec.dataset.id), Number(pdpDec.dataset.sizeIndex), -1);
+      return;
+    }
+
+    var pdpInc = e.target.closest(".pdp-qty-increase");
+    if (pdpInc) {
+      changeQuantity(Number(pdpInc.dataset.id), Number(pdpInc.dataset.sizeIndex), 1);
+      return;
+    }
+
     var buyBtn = e.target.closest(".buy-now");
     if (buyBtn) {
       var pid = Number(buyBtn.dataset.id);
@@ -478,6 +514,7 @@
 
   // Cart open / close
   el.cartButton.addEventListener("click", openCart);
+  el.mobileCartBar.addEventListener("click", openCart);
   el.closeCart.addEventListener("click", closeCartPanel);
   el.cartOverlay.addEventListener("click", closeCartPanel);
   el.continueShopping.addEventListener("click", closeCartPanel);
