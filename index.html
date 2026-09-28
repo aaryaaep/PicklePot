@@ -4,104 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Madhavi's Pickle Pot | Traditional Homemade Pickles</title>
+    <title>Madhavi's Pickle Pot | Homemade Pickles</title>
 
     <meta
         name="description"
-        content="Madhavi's Pickle Pot - Traditional homemade pickles made with authentic ingredients and the joy of freshness."
+        content="Shop traditional homemade pickles from Madhavi's Pickle Pot."
     >
 
-    <meta name="theme-color" content="#8b3f13">
-
-    <meta property="og:title" content="Madhavi's Pickle Pot">
-    <meta
-        property="og:description"
-        content="The Taste of Quality. The Joy of Freshness."
-    >
-    <meta property="og:type" content="website">
-
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
-    <div class="container nav">
+
+    <div class="top-header">
 
         <a href="#" class="brand">
-            <img src="assets/logo.png" alt="Madhavi's Pickle Pot logo">
-            <span>Madhavi's Pickle Pot</span>
+            <img src="logo.png" alt="Madhavi's Pickle Pot">
+            <div>
+                <strong>Madhavi's Pickle Pot</strong>
+                <small>The Taste of Quality</small>
+            </div>
         </a>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#pickles">Pickles</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="search-box">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search for pickles..."
+                autocomplete="off"
+            >
+            <button onclick="searchProducts()">🔍</button>
+        </div>
 
-        <a
-            class="nav-whatsapp"
-            href="https://wa.me/919949577511"
-            target="_blank"
-            rel="noopener"
-        >
-            WhatsApp
-        </a>
+        <button class="cart-button" onclick="openCart()">
+            🛒
+            <span>Cart</span>
+            <b id="cartCount">0</b>
+        </button>
 
     </div>
+
+    <div class="category-bar">
+
+        <button class="category active" data-category="all">
+            All Pickles
+        </button>
+
+        <button class="category" data-category="mango">
+            🥭 Mango
+        </button>
+
+        <button class="category" data-category="gongura">
+            🌿 Gongura
+        </button>
+
+        <button class="category" data-category="lemon">
+            🍋 Lemon
+        </button>
+
+        <button class="category" data-category="tomato">
+            🍅 Tomato
+        </button>
+
+        <button class="category" data-category="special">
+            ⭐ Specials
+        </button>
+
+    </div>
+
 </header>
 
 
-<main>
-
 <!-- HERO -->
 
-<section class="hero" id="home">
+<section class="hero">
 
-    <div class="hero-overlay"></div>
-
-    <div class="container hero-content">
+    <div class="hero-content">
 
         <div class="hero-text">
 
-            <span class="eyebrow">Homemade • Traditional • Fresh</span>
+            <span class="hero-label">
+                ❤️ Homemade with care
+            </span>
 
             <h1>
-                The Taste of Quality.<br>
-                <span>The Joy of Freshness.</span>
+                A Little Jar of
+                <span>Happiness.</span>
             </h1>
 
             <p>
-                Authentic homemade pickles prepared with traditional
-                flavours, quality ingredients and lots of care.
+                Traditional homemade pickles made with authentic
+                flavours, quality ingredients and lots of love.
             </p>
 
-            <div class="hero-buttons">
-                <a href="#pickles" class="btn btn-primary">
-                    Explore Our Pickles
-                </a>
-
-                <a
-                    href="https://wa.me/919949577511?text=Hello%20Madhavi's%20Pickle%20Pot%2C%20I%20would%20like%20to%20place%20an%20order."
-                    class="btn btn-secondary"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Order on WhatsApp
-                </a>
-            </div>
+            <a href="#products" class="shop-button">
+                Shop Pickles →
+            </a>
 
         </div>
 
         <div class="hero-logo">
-            <img
-                src="assets/logo.png"
-                alt="Madhavi's Pickle Pot"
-            >
+            <img src="logo.png" alt="Madhavi's Pickle Pot">
         </div>
 
+    </div>
+
+</section>
+
+
+<!-- TRUST STRIP -->
+
+<section class="trust-strip">
+
+    <div>
+        <span>🏠</span>
+        <strong>Homemade Taste</strong>
+        <small>Made with care</small>
+    </div>
+
+    <div>
+        <span>🌿</span>
+        <strong>Quality Ingredients</strong>
+        <small>Carefully selected</small>
+    </div>
+
+    <div>
+        <span>💬</span>
+        <strong>Easy Ordering</strong>
+        <small>Order through WhatsApp</small>
+    </div>
+
+    <div>
+        <span>❤️</span>
+        <strong>Made With Love</strong>
+        <small>From our kitchen to you</small>
     </div>
 
 </section>
@@ -109,244 +149,95 @@
 
 <!-- PRODUCTS -->
 
-<section class="products-section" id="pickles">
+<main id="products" class="products-section">
 
-    <div class="container">
+    <div class="section-heading">
 
-        <div class="section-heading">
-            <span class="eyebrow">Our Collection</span>
+        <div>
+            <span class="section-label">Our Pickles</span>
 
-            <h2>Pickles Made With Love</h2>
+            <h2>Pick Your Favourite</h2>
 
             <p>
-                Choose your favourite pickle and select the quantity
-                you want to order.
+                Discover delicious homemade flavours for every meal.
             </p>
         </div>
 
-
-        <div class="products-grid">
-
-
-            <!-- MANGO -->
-
-            <article class="product-card">
-
-                <div class="product-image mango">
-                    <span>🥭</span>
-                </div>
-
-                <div class="product-info">
-
-                    <span class="product-tag">
-                        Customer Favourite
-                    </span>
-
-                    <h3>Mango Pickle</h3>
-
-                    <p>
-                        Traditional spicy mango pickle with an
-                        authentic homemade taste.
-                    </p>
-
-                    <label for="mango-quantity">
-                        Select quantity
-                    </label>
-
-                    <select id="mango-quantity">
-                        <option value="250gms">250gms</option>
-                        <option value="500gms" selected>500gms</option>
-                        <option value="1kg">1kg</option>
-                    </select>
-
-                    <button
-                        class="buy-button"
-                        onclick="orderProduct('Mango Pickle', 'mango-quantity')"
-                    >
-                        Buy Now on WhatsApp
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- GONGURA -->
-
-            <article class="product-card">
-
-                <div class="product-image gongura">
-                    <span>🌿</span>
-                </div>
-
-                <div class="product-info">
-
-                    <span class="product-tag">
-                        Traditional Favourite
-                    </span>
-
-                    <h3>Gongura Pickle</h3>
-
-                    <p>
-                        Authentic gongura pickle with a rich,
-                        spicy and tangy flavour.
-                    </p>
-
-                    <label for="gongura-quantity">
-                        Select quantity
-                    </label>
-
-                    <select id="gongura-quantity">
-                        <option value="250gms">250gms</option>
-                        <option value="500gms" selected>500gms</option>
-                        <option value="1kg">1kg</option>
-                    </select>
-
-                    <button
-                        class="buy-button"
-                        onclick="orderProduct('Gongura Pickle', 'gongura-quantity')"
-                    >
-                        Buy Now on WhatsApp
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- LEMON -->
-
-            <article class="product-card">
-
-                <div class="product-image lemon">
-                    <span>🍋</span>
-                </div>
-
-                <div class="product-info">
-
-                    <span class="product-tag">
-                        Homemade
-                    </span>
-
-                    <h3>Lemon Pickle</h3>
-
-                    <p>
-                        A delicious combination of tangy lemon
-                        and traditional pickle spices.
-                    </p>
-
-                    <label for="lemon-quantity">
-                        Select quantity
-                    </label>
-
-                    <select id="lemon-quantity">
-                        <option value="250gms">250gms</option>
-                        <option value="500gms" selected>500gms</option>
-                        <option value="1kg">1kg</option>
-                    </select>
-
-                    <button
-                        class="buy-button"
-                        onclick="orderProduct('Lemon Pickle', 'lemon-quantity')"
-                    >
-                        Buy Now on WhatsApp
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- TOMATO -->
-
-            <article class="product-card">
-
-                <div class="product-image tomato">
-                    <span>🍅</span>
-                </div>
-
-                <div class="product-info">
-
-                    <span class="product-tag">
-                        Homemade
-                    </span>
-
-                    <h3>Tomato Pickle</h3>
-
-                    <p>
-                        Homemade tomato pickle prepared with
-                        traditional spices and flavours.
-                    </p>
-
-                    <label for="tomato-quantity">
-                        Select quantity
-                    </label>
-
-                    <select id="tomato-quantity">
-                        <option value="250gms">250gms</option>
-                        <option value="500gms" selected>500gms</option>
-                        <option value="1kg">1kg</option>
-                    </select>
-
-                    <button
-                        class="buy-button"
-                        onclick="orderProduct('Tomato Pickle', 'tomato-quantity')"
-                    >
-                        Buy Now on WhatsApp
-                    </button>
-
-                </div>
-
-            </article>
-
-        </div>
+        <span id="productCount" class="product-count">
+            6 products
+        </span>
 
     </div>
 
-</section>
+
+    <div id="productsGrid" class="products-grid"></div>
+
+
+    <div id="noResults" class="no-results hidden">
+
+        <div>🥒</div>
+
+        <h3>No pickles found</h3>
+
+        <p>
+            Try searching for something else.
+        </p>
+
+        <button onclick="clearSearch()">
+            Show All Pickles
+        </button>
+
+    </div>
+
+</main>
 
 
 <!-- ABOUT -->
 
-<section class="about-section" id="about">
+<section class="about-section">
 
-    <div class="container about">
+    <div class="about-content">
 
-        <div class="about-logo">
-            <img src="assets/logo.png" alt="Madhavi's Pickle Pot">
+        <div class="about-image">
+            <img src="logo.png" alt="Madhavi's Pickle Pot">
         </div>
 
         <div class="about-text">
 
-            <span class="eyebrow">About Us</span>
+            <span class="section-label">
+                About Madhavi's Pickle Pot
+            </span>
 
-            <h2>Made Traditionally. Enjoyed Naturally.</h2>
+            <h2>
+                Traditional flavours,
+                made with care.
+            </h2>
 
             <p>
-                At Madhavi's Pickle Pot, we believe that great pickle
-                starts with great ingredients and traditional flavours.
+                We believe some of the best food memories begin with
+                the familiar taste of homemade pickle.
             </p>
 
             <p>
-                Every jar is prepared with care to bring the familiar
-                taste of homemade pickles to your table.
+                Madhavi's Pickle Pot brings traditional flavours to
+                your table with carefully prepared homemade pickles.
             </p>
 
-            <div class="values">
+            <div class="about-points">
 
                 <div>
-                    <strong>01</strong>
-                    <span>Traditional Taste</span>
+                    <span>✓</span>
+                    Traditional recipes
                 </div>
 
                 <div>
-                    <strong>02</strong>
-                    <span>Quality Ingredients</span>
+                    <span>✓</span>
+                    Quality ingredients
                 </div>
 
                 <div>
-                    <strong>03</strong>
-                    <span>Made With Care</span>
+                    <span>✓</span>
+                    Made with care
                 </div>
 
             </div>
@@ -360,55 +251,151 @@
 
 <!-- CONTACT -->
 
-<section class="contact-section" id="contact">
+<section class="contact-section">
 
-    <div class="container contact">
+    <div class="contact-content">
 
-        <span class="eyebrow">Order Directly</span>
+        <span class="section-label">
+            Have a question?
+        </span>
 
-        <h2>Want Some Pickle?</h2>
+        <h2>We're just a WhatsApp message away.</h2>
 
         <p>
-            Choose your favourite pickle above or contact us directly
-            on WhatsApp to place your order.
+            Want to ask about a pickle, quantity or availability?
+            Send us a message.
         </p>
 
         <a
-            class="whatsapp-large"
-            href="https://wa.me/919949577511?text=Hello%20Madhavi's%20Pickle%20Pot%2C%20I%20would%20like%20to%20place%20an%20order."
+            href="https://wa.me/919949577511?text=Hello%20Madhavi's%20Pickle%20Pot%2C%20I%20have%20a%20question."
             target="_blank"
             rel="noopener"
+            class="whatsapp-button"
         >
             💬 Chat on WhatsApp
         </a>
 
-        <p class="phone">
+        <div class="phone-number">
             +91 99495 77511
-        </p>
+        </div>
 
     </div>
 
 </section>
 
-</main>
 
+<!-- FOOTER -->
 
 <footer>
 
-    <div class="container footer-content">
+    <div class="footer-content">
 
-        <div>
-            <strong>Madhavi's Pickle Pot</strong>
-            <p>The Taste of Quality. The Joy of Freshness.</p>
+        <div class="footer-brand">
+            <img src="logo.png" alt="Madhavi's Pickle Pot">
+
+            <div>
+                <strong>Madhavi's Pickle Pot</strong>
+                <p>The Taste of Quality. The Joy of Freshness.</p>
+            </div>
         </div>
 
-        <div>
-            <p>© <span id="year"></span> Madhavi's Pickle Pot</p>
+        <div class="footer-links">
+            <a href="#products">Shop</a>
+            <a href="#products">Pickles</a>
+            <a href="https://wa.me/919949577511" target="_blank">
+                WhatsApp
+            </a>
         </div>
 
     </div>
 
+    <div class="copyright">
+        © <span id="year"></span> Madhavi's Pickle Pot. All rights reserved.
+    </div>
+
 </footer>
+
+
+<!-- CART OVERLAY -->
+
+<div
+    id="cartOverlay"
+    class="cart-overlay"
+    onclick="closeCart(event)"
+></div>
+
+
+<!-- CART -->
+
+<aside id="cartPanel" class="cart-panel">
+
+    <div class="cart-header">
+
+        <div>
+            <span class="cart-small-title">Your Order</span>
+            <h2>Shopping Cart</h2>
+        </div>
+
+        <button onclick="closeCart()" class="close-cart">
+            ×
+        </button>
+
+    </div>
+
+
+    <div id="cartItems" class="cart-items"></div>
+
+
+    <div id="emptyCart" class="empty-cart">
+
+        <div>🛒</div>
+
+        <h3>Your cart is empty</h3>
+
+        <p>
+            Add some delicious pickles to get started.
+        </p>
+
+        <button onclick="closeCart()">
+            Continue Shopping
+        </button>
+
+    </div>
+
+
+    <div id="cartBottom" class="cart-bottom hidden">
+
+        <div class="cart-total">
+
+            <span>Total</span>
+
+            <strong id="cartTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+        <button
+            class="checkout-button"
+            onclick="checkoutWhatsApp()"
+        >
+            💬 Order on WhatsApp
+        </button>
+
+        <small>
+            You'll confirm your order directly with us on WhatsApp.
+        </small>
+
+    </div>
+
+</aside>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast">
+    Added to cart ❤️
+</div>
 
 
 <script src="script.js"></script>
