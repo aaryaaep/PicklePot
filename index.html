@@ -8,8 +8,17 @@
 
     <meta
         name="description"
-        content="Shop traditional homemade pickles from Madhavi's Pickle Pot."
+        content="Shop delicious traditional homemade pickles from Madhavi's Pickle Pot."
     >
+
+    <meta name="theme-color" content="#6f3517">
+
+    <meta property="og:title" content="Madhavi's Pickle Pot">
+    <meta
+        property="og:description"
+        content="The Taste of Quality. The Joy of Freshness."
+    >
+    <meta property="og:type" content="website">
 
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
@@ -17,18 +26,21 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
+
 <header class="header">
 
     <div class="top-header">
 
         <a href="#" class="brand">
-            <img src="logo.png" alt="Madhavi's Pickle Pot">
-            <div>
+            <img src="logo.png" alt="Madhavi's Pickle Pot logo">
+
+            <div class="brand-text">
                 <strong>Madhavi's Pickle Pot</strong>
                 <small>The Taste of Quality</small>
             </div>
         </a>
+
 
         <div class="search-box">
             <input
@@ -37,40 +49,80 @@
                 placeholder="Search for pickles..."
                 autocomplete="off"
             >
-            <button onclick="searchProducts()">🔍</button>
+
+            <button
+                type="button"
+                id="searchButton"
+                aria-label="Search"
+            >
+                🔍
+            </button>
         </div>
 
-        <button class="cart-button" onclick="openCart()">
+
+        <button
+            type="button"
+            class="cart-button"
+            id="cartButton"
+            aria-label="Open shopping cart"
+        >
             🛒
-            <span>Cart</span>
+            <span class="cart-label">Cart</span>
             <b id="cartCount">0</b>
         </button>
 
     </div>
 
+
+    <!-- CATEGORY NAVIGATION -->
+
     <div class="category-bar">
 
-        <button class="category active" data-category="all">
+        <button
+            type="button"
+            class="category active"
+            data-category="all"
+        >
             All Pickles
         </button>
 
-        <button class="category" data-category="mango">
+        <button
+            type="button"
+            class="category"
+            data-category="mango"
+        >
             🥭 Mango
         </button>
 
-        <button class="category" data-category="gongura">
+        <button
+            type="button"
+            class="category"
+            data-category="gongura"
+        >
             🌿 Gongura
         </button>
 
-        <button class="category" data-category="lemon">
+        <button
+            type="button"
+            class="category"
+            data-category="lemon"
+        >
             🍋 Lemon
         </button>
 
-        <button class="category" data-category="tomato">
+        <button
+            type="button"
+            class="category"
+            data-category="tomato"
+        >
             🍅 Tomato
         </button>
 
-        <button class="category" data-category="special">
+        <button
+            type="button"
+            class="category"
+            data-category="special"
+        >
             ⭐ Specials
         </button>
 
@@ -79,7 +131,7 @@
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -101,14 +153,21 @@
                 flavours, quality ingredients and lots of love.
             </p>
 
-            <a href="#products" class="shop-button">
+            <a
+                href="#products"
+                class="shop-button"
+            >
                 Shop Pickles →
             </a>
 
         </div>
 
+
         <div class="hero-logo">
-            <img src="logo.png" alt="Madhavi's Pickle Pot">
+            <img
+                src="logo.png"
+                alt="Madhavi's Pickle Pot"
+            >
         </div>
 
     </div>
@@ -116,45 +175,65 @@
 </section>
 
 
-<!-- TRUST STRIP -->
+<!-- ================= TRUST ================= -->
 
 <section class="trust-strip">
 
-    <div>
+    <div class="trust-item">
         <span>🏠</span>
-        <strong>Homemade Taste</strong>
-        <small>Made with care</small>
+
+        <div>
+            <strong>Homemade Taste</strong>
+            <small>Made with care</small>
+        </div>
     </div>
 
-    <div>
+
+    <div class="trust-item">
         <span>🌿</span>
-        <strong>Quality Ingredients</strong>
-        <small>Carefully selected</small>
+
+        <div>
+            <strong>Quality Ingredients</strong>
+            <small>Carefully selected</small>
+        </div>
     </div>
 
-    <div>
+
+    <div class="trust-item">
         <span>💬</span>
-        <strong>Easy Ordering</strong>
-        <small>Order through WhatsApp</small>
+
+        <div>
+            <strong>Easy Ordering</strong>
+            <small>Order through WhatsApp</small>
+        </div>
     </div>
 
-    <div>
+
+    <div class="trust-item">
         <span>❤️</span>
-        <strong>Made With Love</strong>
-        <small>From our kitchen to you</small>
+
+        <div>
+            <strong>Made With Love</strong>
+            <small>From our kitchen to you</small>
+        </div>
     </div>
 
 </section>
 
 
-<!-- PRODUCTS -->
+<!-- ================= PRODUCTS ================= -->
 
-<main id="products" class="products-section">
+<main
+    class="products-section"
+    id="products"
+>
 
     <div class="section-heading">
 
         <div>
-            <span class="section-label">Our Pickles</span>
+            <span class="section-label">
+                Our Pickles
+            </span>
 
             <h2>Pick Your Favourite</h2>
 
@@ -163,19 +242,35 @@
             </p>
         </div>
 
-        <span id="productCount" class="product-count">
-            6 products
+
+        <span
+            id="productCount"
+            class="product-count"
+        >
+            0 products
         </span>
 
     </div>
 
 
-    <div id="productsGrid" class="products-grid"></div>
+    <!-- IMPORTANT: JavaScript renders products here -->
+
+    <div
+        id="productsGrid"
+        class="products-grid"
+    ></div>
 
 
-    <div id="noResults" class="no-results hidden">
+    <!-- NO RESULTS -->
 
-        <div>🥒</div>
+    <div
+        id="noResults"
+        class="no-results hidden"
+    >
+
+        <div class="no-results-icon">
+            🥒
+        </div>
 
         <h3>No pickles found</h3>
 
@@ -183,7 +278,10 @@
             Try searching for something else.
         </p>
 
-        <button onclick="clearSearch()">
+        <button
+            type="button"
+            id="clearSearchButton"
+        >
             Show All Pickles
         </button>
 
@@ -192,15 +290,21 @@
 </main>
 
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 
 <section class="about-section">
 
     <div class="about-content">
 
         <div class="about-image">
-            <img src="logo.png" alt="Madhavi's Pickle Pot">
+
+            <img
+                src="logo.png"
+                alt="Madhavi's Pickle Pot"
+            >
+
         </div>
+
 
         <div class="about-text">
 
@@ -214,14 +318,16 @@
             </h2>
 
             <p>
-                We believe some of the best food memories begin with
-                the familiar taste of homemade pickle.
+                We believe some of the best food memories begin
+                with the familiar taste of homemade pickle.
             </p>
 
             <p>
-                Madhavi's Pickle Pot brings traditional flavours to
-                your table with carefully prepared homemade pickles.
+                Madhavi's Pickle Pot brings traditional flavours
+                to your table with carefully prepared homemade
+                pickles.
             </p>
+
 
             <div class="about-points">
 
@@ -249,7 +355,7 @@
 </section>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 
 <section class="contact-section">
 
@@ -259,7 +365,9 @@
             Have a question?
         </span>
 
-        <h2>We're just a WhatsApp message away.</h2>
+        <h2>
+            We're just a WhatsApp message away.
+        </h2>
 
         <p>
             Want to ask about a pickle, quantity or availability?
@@ -267,7 +375,7 @@
         </p>
 
         <a
-            href="https://wa.me/919949577511?text=Hello%20Madhavi's%20Pickle%20Pot%2C%20I%20have%20a%20question."
+            href="https://wa.me/919949577511?text=Hello%20Madhavi%27s%20Pickle%20Pot%2C%20I%20have%20a%20question."
             target="_blank"
             rel="noopener"
             class="whatsapp-button"
@@ -284,90 +392,155 @@
 </section>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
     <div class="footer-content">
 
         <div class="footer-brand">
-            <img src="logo.png" alt="Madhavi's Pickle Pot">
+
+            <img
+                src="logo.png"
+                alt="Madhavi's Pickle Pot"
+            >
 
             <div>
                 <strong>Madhavi's Pickle Pot</strong>
-                <p>The Taste of Quality. The Joy of Freshness.</p>
+
+                <p>
+                    The Taste of Quality.
+                    The Joy of Freshness.
+                </p>
             </div>
+
         </div>
 
+
         <div class="footer-links">
-            <a href="#products">Shop</a>
-            <a href="#products">Pickles</a>
-            <a href="https://wa.me/919949577511" target="_blank">
+
+            <a href="#products">
+                Shop
+            </a>
+
+            <a href="#products">
+                Pickles
+            </a>
+
+            <a
+                href="https://wa.me/919949577511"
+                target="_blank"
+                rel="noopener"
+            >
                 WhatsApp
             </a>
+
         </div>
 
     </div>
 
+
     <div class="copyright">
-        © <span id="year"></span> Madhavi's Pickle Pot. All rights reserved.
+
+        © <span id="year"></span>
+        Madhavi's Pickle Pot.
+        All rights reserved.
+
     </div>
 
 </footer>
 
 
-<!-- CART OVERLAY -->
+<!-- ================= CART OVERLAY ================= -->
 
 <div
     id="cartOverlay"
     class="cart-overlay"
-    onclick="closeCart(event)"
 ></div>
 
 
-<!-- CART -->
+<!-- ================= CART PANEL ================= -->
 
-<aside id="cartPanel" class="cart-panel">
+<aside
+    id="cartPanel"
+    class="cart-panel"
+    aria-hidden="true"
+>
 
     <div class="cart-header">
 
         <div>
-            <span class="cart-small-title">Your Order</span>
-            <h2>Shopping Cart</h2>
+            <span class="cart-small-title">
+                Your Order
+            </span>
+
+            <h2>
+                Shopping Cart
+            </h2>
         </div>
 
-        <button onclick="closeCart()" class="close-cart">
+
+        <button
+            type="button"
+            id="closeCart"
+            class="close-cart"
+            aria-label="Close cart"
+        >
             ×
         </button>
 
     </div>
 
 
-    <div id="cartItems" class="cart-items"></div>
+    <!-- CART ITEMS -->
+
+    <div
+        id="cartItems"
+        class="cart-items"
+    ></div>
 
 
-    <div id="emptyCart" class="empty-cart">
+    <!-- EMPTY CART -->
 
-        <div>🛒</div>
+    <div
+        id="emptyCart"
+        class="empty-cart"
+    >
 
-        <h3>Your cart is empty</h3>
+        <div>
+            🛒
+        </div>
+
+        <h3>
+            Your cart is empty
+        </h3>
 
         <p>
             Add some delicious pickles to get started.
         </p>
 
-        <button onclick="closeCart()">
+        <button
+            type="button"
+            id="continueShopping"
+        >
             Continue Shopping
         </button>
 
     </div>
 
 
-    <div id="cartBottom" class="cart-bottom hidden">
+    <!-- CART TOTAL -->
+
+    <div
+        id="cartBottom"
+        class="cart-bottom hidden"
+    >
 
         <div class="cart-total">
 
-            <span>Total</span>
+            <span>
+                Total
+            </span>
 
             <strong id="cartTotal">
                 ₹0
@@ -375,12 +548,15 @@
 
         </div>
 
+
         <button
+            type="button"
+            id="checkoutButton"
             class="checkout-button"
-            onclick="checkoutWhatsApp()"
         >
             💬 Order on WhatsApp
         </button>
+
 
         <small>
             You'll confirm your order directly with us on WhatsApp.
@@ -391,9 +567,14 @@
 </aside>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
-<div id="toast" class="toast">
+<div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+>
     Added to cart ❤️
 </div>
 
